@@ -1,0 +1,377 @@
+.h-weather{
+    background: linear-gradient(to bottom, #187ca8 70%, #b2d2ff 100%);
+}
+.header-left{
+  padding-top: 0;
+}
+.weather{
+    min-height: 65vh;
+    background: #ededed;
+    padding: .5em .2em .5em .2em ;
+}
+body{
+  background: #ededed;
+}
+.card{
+    padding: .4em;
+}
+.card > div{
+  background: #ffffff;
+  min-height: 80px;
+  padding-top: .4em;
+  padding-bottom: .4em;
+  padding-left: .4em;
+  padding-right: .4em;
+  border-radius: 10px;
+}
+.location-select{
+  background: url('../image/Arrow1.svg') no-repeat 100% 0;
+  background-color: #eee;
+  overflow: hidden;
+  font-size: 14pt;
+  font-weight: bold;
+  width: 100%;
+  padding-top: .3em;
+  padding-right: 2.5em;
+  border: 0px solid #eee;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  display: block;
+}
+.white-border{
+  border: 1px solid #eee;
+  display: flex;
+  margin-top: .5em;
+  width: 100%;
+}
+.b-area{
+  display: inline-block;
+  color: #111;
+  font-weight: bold;
+  font-size: 13pt;
+  padding: .5em 0 .5em 0;
+  width: 100%;
+}
+.b-left{
+  width: 40%;
+}
+.b-area div{
+  width: 100%;
+  text-align: center;
+}
+.border-left{
+  border-left: 1px solid #eee;
+}
+.b-area > span{
+  display: block;
+  text-align: center;
+}
+.b-area >span.hide{
+  filter: opacity(0);
+}
+.time-button{
+  font-weight: bold;
+  border: 0;
+  background: rgba(238, 238, 238, 0.5);
+  font-size: 13pt;
+  padding: .2em .7em .1em .7em;
+  border-radius: 20px;
+  transition: background .5s;
+  cursor: pointer;
+}
+.time-button:hover{
+  background: rgba(238, 238, 238, 0.8);
+}
+.time-button.selected{
+  background: #eee;
+}
+.lunarDate, .temperature, .windDirection, .tideWave{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.lunarDate, .temperature{
+  height: 110px;
+}
+.lunarDate>div, .temperature>div, .windDirection>div, .tideWave>div{
+  align-self: baseline;
+}
+.temperature .temp-normal{
+  display: block;
+  line-height: 1.2em;
+}
+.temperature .temp-bold{
+  display: block;
+  font-weight: bold;
+  font-size: 16pt;
+  line-height: 1em;
+  margin-top: .5em;
+  color: #f42a2a;
+}
+.lunarDate img{
+  width: 40%;
+}
+.temperature img{
+  height: 70px;
+  margin-right: 20px;
+}
+.lunarDate span.card-desc{
+  margin-top: .3em;
+  font-size: 18pt;
+  display: block;
+  font-weight: bold;
+  line-height: 1em;
+  color: #e8a725;
+}
+.weather span.card-title{
+  font-size: 12pt;
+  font-weight: normal;
+}
+.wind-normal{
+  margin-top: .5em;
+  display: block;
+  font-size: 15pt;
+  line-height: 1.2em;
+  color: #187ca8;
+}
+.wind-normal b{
+  display: block;
+  font-size: 22pt;
+}
+.windDirection, .windGuts, .tideWave, .tideTime{
+  height: 90px;
+}
+.guts{
+  margin-top: .5em;
+  display: block;
+  font-size: 16pt;
+  line-height: 1.2em;
+  color: #187ca8;
+}
+.guts b{
+  font-size: 18pt;
+}
+.moon-sun{
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #e8a725;
+}
+.icons{
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  margin-right: .5em;
+}
+.card-smallData{
+  display: block;
+  color: #187ca8;
+  font-weight: bold;
+  font-size: 16pt;
+}
+.loading{
+  font-size: 30pt;
+  font-weight: bold;
+  color: #333;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  margin: auto;
+  margin-top: 10vh;
+  margin-bottom: 20vh;
+  
+}
+.loading img{
+  width: 80%;
+  max-height: 400px;
+  display: block;
+  margin: auto;
+  padding-bottom: 1em;
+}
+.wind-arrow{
+  width: 45px;
+  height: 45px;
+  margin-right: 1em;
+}
+@media (min-width: 375px) {
+  .time-button{
+    padding: .2em 1.2em .1em 1.2em;
+  }
+  .card > div{
+    padding-left: .6em;
+    padding-right: .6em;
+  }
+  .lunarDate span.card-desc{
+    font-size: 20pt;
+    line-height: 1.3em;
+  }
+  .temperature .temp-bold{
+    font-size: 18pt;
+  }
+  .wind-normal{
+    margin-left: .5em;
+  }
+}
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+  .location-select{
+    width: 200px;
+  }
+  .header{
+    min-height: 240px;
+  }
+  .header-left{
+    padding-top: 1em;
+  }
+  .white-border{
+    width: 230px;
+  }
+  .header-right{
+    max-width: 240px;
+  }
+  .time-button{
+    padding: .2em .7em .1em .7em;
+  }
+  .windDirection, .windGuts{
+    height: 110px;
+  }
+  .tideLevel div{
+    height: 150px;
+  }
+  .guts{
+    font-size: 18pt;
+  }
+  .guts b{
+    font-size: 22pt;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+  .location-select{
+    width: 250px;
+  }
+  .white-border{
+    width: 320px;
+  }
+  .header-right{
+    max-width: 320px;
+  }
+  .time-button{
+    padding: .2em 1.2em .1em 1.2em;
+  }
+  .weather span.card-title{
+    font-size: 14pt;
+  }
+  .card > div{
+    padding-top: .6em;
+    padding-bottom: .6em;
+    padding-left: .8em;
+    padding-right: .8em;
+    border-radius: 15px;
+  }
+  .lunarDate span.card-desc{
+    font-size: 20pt;
+  }
+  .lunarDate, .temperature, .windDirection, .windGuts{
+    height: 120px;
+  }
+  .tideWave, .tideTime{
+    height: 110px;
+  }
+  .moonRise, .sunRise{
+    height: 100px;
+  }
+  .wind-normal{
+    margin-top: .5em;
+    font-size: 18pt;
+  }
+  .wind-normal b{
+    font-size: 25pt;
+  }
+  .tideLevel div{
+    height: 180px;
+  }.wind-arrow{
+    width: 55px;
+    height: 55px;
+    margin-right: 2em;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    .h-weather{
+        background: linear-gradient(to right, #b2d2ff, #187ca8 30%, #187ca8 70%, #b2d2ff 100%);
+    }
+    .header.h-weather{
+      height: 200px;
+    }
+    .header-right{
+      max-width: 50%;
+    }
+    .header{
+      min-height: 200px;
+    }
+    .container-fluid{
+      width: 960px;
+    }
+    .lunarDate span.card-desc{
+      font-size: 24pt;
+    }
+    .lunarDate, .temperature, .windDirection, .windGuts, .tideWave, .tideTime{
+      height: 130px;
+    }
+    .moonRise, .sunRise{
+      height: 110px;
+    }
+    .temperature img{
+      height: 95px;
+    }
+    .tideLevel{
+      height: 250px;
+    }
+    .temperature .temp-normal{
+      font-size: 14pt;
+    }
+    .temperature .temp-bold{
+      font-size: 20pt;
+    }
+    .guts{
+      font-size: 20pt;
+    }
+    .guts b{
+      font-size: 25pt;
+    }
+    .wind-normal{
+      font-size: 18pt;
+    }
+    .wind-normal b{
+      font-size: 30pt;
+    }
+    .moon-sun{
+      font-size: 14pt;
+    }
+    .icons{
+      width: 34px;
+      height: 34px;
+    }
+    .card > div{
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    .card-smallData{
+      font-size: 20pt;
+    }
+}
+
+@media (min-width: 1200px) {
+  .container-fluid{
+    width: 1140px;
+  }
+}

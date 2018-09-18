@@ -1,0 +1,11 @@
+.title h2{
+    font-size: 30pt;
+    font-weight: bold;
+    line-height: 1.2em;
+    padding-bottom: 0em;
+}
+.title h1 {
+    font-size: 20pt;
+    font-weight: normal;
+    line-height: 1em;
+}

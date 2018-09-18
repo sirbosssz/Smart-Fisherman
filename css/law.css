@@ -1,0 +1,37 @@
+.header.law{
+    background: linear-gradient(to right, #187ca8, #e55625 60%)
+}
+#pdf{
+    background: #ededed;
+}
+
+#pdf iframe{
+    padding-top: .8em;
+    padding-bottom: .8em;
+    width: 100%;
+    height: 1000px;
+    height: 100vh;
+}
+
+#pdf .container{
+    text-align: center;
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+}
+
+#pdf .button{
+    background: rgba(35, 117, 232, 0.8);
+    color: #ededed;
+}
+
+#pdf .button:hover{
+    background: #2375e8;
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    #pdf iframe{
+        height: 1000px;
+    }
+}
