@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- additional meta -->
+  <meta name="theme-color" content="#232323" />
+
+  <!-- title -->
+  <title>ตลาดปลา - Smart Fisherman</title>
+  <!-- bootstrap grid css -->
+  <link rel="stylesheet" href="/_asset/bootstrap/bootstrap-grid.min.css">
+  <!-- import quark font -->
+  <link rel="stylesheet" href="/_asset/font/font.css">
+  <!-- custom style css -->
+  <link rel="stylesheet" href="/_asset/css/style.css">
+  <link rel="stylesheet" href="/_asset/css/navbar.css">
+  <link rel="stylesheet" href="/_asset/css/footer.css">
+  <link rel="stylesheet" href="/_asset/css/market.css">
+
+  <!-- js framework -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <!-- responsive navbar -->
+  <div class="navbar">
+    <div class="nav-left">
+      <!-- icon area -->
+      <span class="icon">
+        <a href="/">Smart Fisherman</a>
+      </span>
+    </div>
+    <div class="nav-right">
+      <ul class="nav-menu">
+        <!-- nav menu -->
+        <li class="">
+          <a href="/">หน้าแรก</a>
+        </li>
+        <li class=""><a href="/about">ข้อมูลโครงการ</a></li>
+        <li class=""><a href="/encyclopedia">สารานุกรมปลา</a></li>
+        <li class=""><a href="/weather">พยากรณ์อากาศ</a></li>
+        <li class="nav-selected">
+          <a href="/market">ตลาดปลา</a>
+        </li>
+        <li class="">
+          <a href="/law">ข้อมูลกฏหมาย</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- header -->
+  <div class="header h-market">
+    <div class="container">
+      <div class="header-left">
+        <h1>ตลาดปลา</h1>
+        <h2>ดูรายการปลาที่ขายโดยชาวประมง</h2>
+      </div>
+      <!-- <div class="header-right">
+                <span>ค้นหาปลา</span>
+            </div> -->
+    </div>
+  </div>
+
+  <!-- market list section -->
+  <div id="market-list">
+    <router-view></router-view>
+    <div class="container">
+      <div id="fish-list">
+        <div class="title">
+          <h1 v-if="!searched">รายการที่ขาย</h1>
+          <h1 v-else>ผลการค้นหา "{{searchDisplay}}"</h1>
+          <span class="warning">สามารถสั่งซื้อปลาได้จากแอปพลิเคชัน Smart Fisherman</span>
+          <div class="search-area">
+            <div class="searchbar">
+              <div class="button clear" v-on:click="clearSearch" v-if="searched">X</div>
+              <input type="text" class="search" name="search" v-model="searchText" placeholder="ใส่ชื่อปลาที่ต้องการค้นหา"
+                @keyup.enter="search">
+            </div>
+            <button class="search" v-on:click="search">ค้นหา</button>
+          </div>
+        </div>
+        <div class="row" v-if="!load">
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+          <div class="col-6 col-sm-4 col-md-3 fish-card">
+            <div class="card no">
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">กำลังโหลด</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+        </div>
+        <div class="row" v-else>
+          <div class="col-6 col-sm-4 col-md-3 fish-card" v-for="fish in fishes[page]">
+            <div class="card" v-if="fish.title != 'ยังไม่มีรายการขาย'" :data="fish">
+              <router-link :to='fish.title + "-i-" + fish.id'>
+                <img :src="fish.image[0].link" alt="fish" width="100%">
+                <span class="fish-title">{{fish.title}}</span>
+                <span class="fish-weight">{{fish.weight}} กก.</span>
+                <span class="fish-price">{{fish.price}}฿ / กก.</span>
+              </router-link>
+            </div>
+            <div class="card no" v-else>
+              <img src="/_asset/image/fish-load.svg" alt="fish" width="100%">
+              <span class="fish-title no">{{fish.title}}</span>
+              <span class="fish-price">----</span>
+            </div>
+          </div>
+        </div>
+        <div class="navigator">
+          <span class="button" v-on:click="page--" v-if="page != 0">
+            <</span> <span class="button disable" v-else>
+              <</span> <span class="button" v-on:click="page-=2" v-if="page-1 > 0">{{page-1}}
+          </span>
+          <span class="button" v-on:click="page-=1" v-if="page-1 >= 0">{{page}}</span>
+          <span class="button this-page">{{page+1}}</span>
+          <span class="button" v-on:click="page+=1" v-if="page+2 <= allPage">{{page+2}}</span>
+          <span class="button" v-on:click="page+=2" v-if="page+3 <= allPage">{{page+3}}</span>
+          <span class="button" v-on:click="page++" v-if="page != allPage-1">></span>
+          <span class="button disable" v-else>></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="foot-left">
+      <a href="/">2018, Smart Fisherman</a>
+      <a href="/">สมาร์ท ฟิชเชอร์แมน</a>
+      <span>
+        จากโครงการยกระดับมาตรฐาน ชาวประมงของฝั่งอันดามัน
+      </span>
+    </div>
+    <div class="foot-right">
+      <div class="foot-frame">
+        <span>ดาวน์โหลดแอปพลิเคชั่น</span>
+        <span class="download">
+          <a href="#">
+            <img class="play-download" src="/_asset/image/google-play-badge.png" alt="android download" />
+          </a>
+          <a href="#">
+            <img class="ios-download" src="/_asset/image/app-store.svg" alt="ios download" />
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script src="/_asset/javascript/main.js"></script>
+  <script src="/_asset/javascript/navbar.js"></script>
+  <script src="/_asset/javascript/market.js"></script>
+  <script src="/_asset/vue/market.js"></script>
+</body>
